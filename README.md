@@ -1,1 +1,1 @@
-# artificial_inteligence_simulations
+# Artificial_Intelligence_Simulations
