@@ -3,7 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Mr BOT</title>
+	{% if title %} 
+		<title>AI_Simulations - {{title}}</title>
+	{% else %}
+		<title>AI_Simulations</title>
+	{% endif %}
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,9 +60,16 @@
 	
 	<!-- Main body Starts  -->
 
-	{% block content %}
-		
-	{% endblock %}
+	<div class="container">
+        {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
 
 	<!-- Main body ends  -->
 

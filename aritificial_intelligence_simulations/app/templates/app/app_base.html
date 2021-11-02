@@ -1,10 +1,8 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Mr BOT</title>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,6 +10,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="{% static 'app/Css/app_master.css'%}">
+
+	{% if title %} 
+		<title>AI_Simulations - {{title}}</title>
+	{% else %}
+		<title>AI_Simulations</title>
+	{% endif %}
 
 </head>
 <body>
@@ -55,10 +59,18 @@
 	************************************************************************************************************************** -->
 	
 	<!-- Main body Starts  -->
+	<div class="container">
+        {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
 	
-	{% block content %}
-		
-	{% endblock %}
+	
 	<div style="height: 30px;" >
 		<!-- Eat Height -->
 	</div>

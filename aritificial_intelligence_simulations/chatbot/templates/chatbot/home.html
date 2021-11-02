@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	{% if title %} 
-		<title>AI_Simulations - {{title}}</title>
-	{% else %}
-		<title>AI_Simulations</title>
-	{% endif %}
-</head>
-<body>
-	<h1>This is home page..</h1>
-</body>
-</html>
+{% extends "app/app_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container form_class">
+    <h1 style="text-align: center;">WELCOME TO HOME</h1>
+    <a href="{% url 'chatbot-train'%}"><button class="btn btn-outline-success">Train Your ChatBot</button></a>
+</div>
+{% endblock %}
