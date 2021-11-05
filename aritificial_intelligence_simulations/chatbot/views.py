@@ -35,8 +35,18 @@ def train(request):
 	if request.method=="POST":
 		if train_chatbot(request.user.username):
 			messages.success(request, 'Chat Bot Trained successfully.')
-			return redirect('chatbot-home')
+			return redirect('chatapp-home')
 	return render(request, 'chatbot/train.html', {'title':'train_chatbot'})
+
+# @require_http_methods(["POST"])
+# @login_required
+# def train_process(request):
+# 	if not os.path.isfile(path):
+# 		messages.warning(request, 'You need to enter some of your personal details before training the chatbot.')
+# 		return redirect('chatbot-personal_details')
+# 	train_chatbot(request.user.username)
+# 	messages.success(request, 'Chat Bot Trained successfully.')
+# 	return redirect('chatapp-home')
 
 @require_http_methods(["POST"])
 @csrf_exempt
