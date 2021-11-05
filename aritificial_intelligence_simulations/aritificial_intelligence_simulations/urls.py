@@ -19,10 +19,10 @@ from django.views import generic
 
 
 urlpatterns = [
-    path('', generic.TemplateView.as_view(template_name='app/bot_home.html'), name='bot-home'),
+    path('', generic.TemplateView.as_view(template_name='app/app_home.html'), name='app-home'),
     path('services/', generic.TemplateView.as_view(template_name='app/services.html'), name='services'),
     path('admin/', admin.site.urls),
-    path('app/', include("app.urls", namespace="app")),
+    path('app/', include("app.urls")),
     path('app/', include("django.contrib.auth.urls")),
     path('chatbot/', include("chatbot.urls")),
 ]
