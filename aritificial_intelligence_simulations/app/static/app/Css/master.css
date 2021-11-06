@@ -84,6 +84,14 @@ li{
 }
 }
 
+.form_class {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px 20px 20px 20px;
+  background-color: #fcfcfc;  
+  box-shadow: 0px 0px 3px 0px grey;
+}
+
 .bottomright {
      position: fixed;
      bottom: 0px;

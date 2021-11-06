@@ -1,3 +1,13 @@
+ <!-- 
+***************************************************
+
+  This file is for our dashboard base all the files working on dashboard will
+  inherit from this file.
+
+***************************************************
+-->
+
+
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -48,27 +58,19 @@
 				<a class="nav-link active" aria-current="page" href="{% url 'app-dashboard' %}">Home</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
-			  </li>
-			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				  Dropdown
-				</a>
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-				  <li><a class="dropdown-item" href="#">Action</a></li>
-				  <li><a class="dropdown-item" href="#">Another action</a></li>
-				  <li><hr class="dropdown-divider"></li>
-				  <li><a class="dropdown-item" href="#">Something else here</a></li>
-				</ul>
+				<a class="nav-link" href="">Services</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link disabled">Disabled</a>
+				<a class="nav-link" href="{% url 'contact' %}">Contact</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="">About</a>
 			  </li>
 			</ul>
 
 			<div class="d-flex">
 				{% if user.is_authenticated %}
-					<button class="btn btn-outline-primary"><a style="color:aliceblue; text-decoration:none" href="{% url 'logout' %}"><span class="glyphicon glyphicon-user text-light"></span> Logout</a></button>
+					<button class="btn btn-outline-secondary"><a style="color:aliceblue; text-decoration:none" href="{% url 'logout' %}"><span class="glyphicon glyphicon-user text-light"></span> Logout</a></button>
 				{% else %}
 					<button class="btn btn-outline-primary px-3 mx-4"><a href="{% url 'login' %}" class="text-light"><span class="glyphicon glyphicon-log-in"></span> Login </a></button>
 					<button class="btn btn-outline-primary"><a href="{% url 'signup' %}" class="text-light"><span class="glyphicon glyphicon-user"></span> SignUp</a></button>
@@ -88,7 +90,6 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="#">WebSiteName</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
@@ -150,19 +151,10 @@
 	  	 			</ul>
 	  	 		</div>
 	  	 		<div class="footer-col">
-	  	 			<h4>Get Help</h4>
-	  	 			<ul>
-	  	 				<li><a href="#">Shipping</a></li>
-	  	 				<li><a href="#">Returns</a></li>
-	  	 				<li><a href="#">Order Status</a></li>
-	  	 				<li><a href="#">Payment Options</a></li>
-	  	 			</ul>
-	  	 		</div>
-	  	 		<div class="footer-col">
 	  	 			<h4>Address</h4>
-	  	 			<ul>
-	  	 				<li><a href="#">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate adipisci quia ab omnis id ipsum quae inventore </a></li>
-	  	 			</ul>
+	  	 			<!-- <ul> -->
+	  	 				<div style="color: white;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate adipisci quia ab omnis id ipsum quae inventore.</div>
+	  	 			<!-- </ul> -->
 	  	 		</div>
 	  	 		<div class="footer-col">
 	  	 			<h4>follow us</h4>

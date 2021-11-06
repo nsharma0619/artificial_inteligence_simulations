@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views import generic
-
+from . import views
 
 urlpatterns = [
-    path('', generic.TemplateView.as_view(template_name='app/app_home.html'), name='app-home'),
+    path('', views.HomeView, name='app-home'),
     path('services/', generic.TemplateView.as_view(template_name='app/services.html'), name='services'),
     path('admin/', admin.site.urls),
     path('app/', include("app.urls")),
     path('app/', include("django.contrib.auth.urls")),
-    path('chatbot/', include("chatbot.urls")),
+    # path('chatbot/', include("chatbot.urls")),
 ]

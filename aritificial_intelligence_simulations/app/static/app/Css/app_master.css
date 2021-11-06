@@ -8,7 +8,7 @@ body{
   padding:0;
   box-sizing: border-box;
 }
-navbar {
+.navbar {
 	max-height: 20px;
 }
 .container{
@@ -91,7 +91,7 @@ li{
 
 }
 .form_class {
-	max-width: 500px;
+	max-width: 100px;
 	margin: 0 auto;
 }
 .bottomright {
