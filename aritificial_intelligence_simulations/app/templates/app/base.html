@@ -1,4 +1,4 @@
- <!-- 
+<!-- 
 ***************************************************
 
   This file is for our dashboard base all the files working on dashboard will
@@ -7,179 +7,283 @@
 ***************************************************
 -->
 
-
 <!DOCTYPE html>
 {% load static %}
 <html>
-<head>
-	<meta charset="utf-8">
-	{% if title %} 
+	<head>
+		<meta charset="utf-8" />
+		{% if title %}
 		<title>AI_Simulations - {{title}}</title>
-	{% else %}
+		{% else %}
 		<title>AI_Simulations</title>
-	{% endif %}
+		{% endif %}
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="https://kit.fontawesome.com/f0e1e7f5fd.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'app/Css/master.css'%}">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://kit.fontawesome.com/f0e1e7f5fd.js"
+			crossorigin="anonymous"
+		></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{% static 'app/Css/master.css'%}"
+		/>
+
+		<link rel="stylesheet" href="{% static 'app/Css/chat_area.css' %}" />
 	</head>
-	
-<body>
 
-	<!-- top header -->
+	<body>
+		<!-- top header -->
 
-	<div class="p-1" id="topHeader">
-		<div class="container">
-		  <div class="row text-end">
-			<div class="col-12 text-right">
-			  <a style="text-decoration:none" href="tel:+917053632562" class="p-1"><i class="fas fa-phone"></i> +91-7053632562</a>
-			  <a style="text-decoration:none" href="mailto: nsharma0619@gmail.com" class="p-1"><i class="fas fa-envelope-open-text"></i>
-				nsharma0619@gmail</a>
+		<div class="p-1" id="topHeader">
+			<div class="container">
+				<div class="row text-end">
+					<div class="col-12 text-right">
+						<a
+							style="text-decoration: none"
+							href="tel:+917053632562"
+							class="p-1"
+							><i class="fas fa-phone"></i> +91-7053632562</a
+						>
+						<a
+							style="text-decoration: none"
+							href="mailto: nsharma0619@gmail.com"
+							class="p-1"
+							><i class="fas fa-envelope-open-text"></i>
+							nsharma0619@gmail</a
+						>
+					</div>
+				</div>
 			</div>
-		  </div>
 		</div>
-	</div>
 
-	<!-- top header ended -->
+		<!-- top header ended -->
 
-	<!-- _________________________Nav bar starts__________________________ -->
+		<!-- _________________________Nav bar starts__________________________ -->
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-		  <a class="navbar-brand" href="{% url 'app-home' %}">AI_Simulations</a>
-		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			  <li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="{% url 'app-dashboard' %}">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="">Services</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="{% url 'contact' %}">Contact</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="">About</a>
-			  </li>
-			</ul>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'app-home' %}"
+					>AI_Simulations</a
+				>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarSupportedContent"
+				>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a
+								class="nav-link active"
+								aria-current="page"
+								href="{% url 'app-dashboard' %}"
+								>Home</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'contact' %}"
+								>Contact</a
+							>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">About</a>
+						</li>
+					</ul>
 
-			<div class="d-flex">
-				{% if user.is_authenticated %}
-					<button class="btn btn-outline-secondary"><a style="color:aliceblue; text-decoration:none" href="{% url 'logout' %}"><span class="glyphicon glyphicon-user text-light"></span> Logout</a></button>
-				{% else %}
-					<button class="btn btn-outline-primary px-3 mx-4"><a href="{% url 'login' %}" class="text-light"><span class="glyphicon glyphicon-log-in"></span> Login </a></button>
-					<button class="btn btn-outline-primary"><a href="{% url 'signup' %}" class="text-light"><span class="glyphicon glyphicon-user"></span> SignUp</a></button>
-				{% endif %}
+					<div class="d-flex">
+						{% if user.is_authenticated %}
+						<button class="btn btn-outline-secondary">
+							<a
+								style="color: aliceblue; text-decoration: none"
+								href="{% url 'logout' %}"
+								><span
+									class="glyphicon glyphicon-user text-light"
+								></span>
+								Logout</a
+							>
+						</button>
+						{% else %}
+						<button class="btn btn-outline-primary px-3 mx-4">
+							<a href="{% url 'login' %}" class="text-light"
+								><span
+									class="glyphicon glyphicon-log-in"
+								></span>
+								Login
+							</a>
+						</button>
+						<button class="btn btn-outline-primary">
+							<a href="{% url 'signup' %}" class="text-light"
+								><span class="glyphicon glyphicon-user"></span>
+								SignUp</a
+							>
+						</button>
+						{% endif %}
+					</div>
+				</div>
 			</div>
-			
-		  </div>
-		
-		</div>
-	</nav>
+		</nav>
 
-	<nav class="navbar navbar-inverse">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>                        
-	      </button>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="{% url 'app-home' %}">Home</a></li>
-	        <li><a href="{% url 'services' %}">Services</a></li>
-	        <li><a href="#">About</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	      	
-	      </ul>
-	    </div>
-	  </div>
-	</nav>
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<button
+						type="button"
+						class="navbar-toggle"
+						data-toggle="collapse"
+						data-target="#myNavbar"
+					>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="{% url 'app-home' %}">Home</a>
+						</li>
+						<li><a href="{% url 'services' %}">Services</a></li>
+						<li><a href="#">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right"></ul>
+				</div>
+			</div>
+		</nav>
 
-	<!-- ____________________________Nav bar Ends________________________________ -->
+		<!-- ____________________________Nav bar Ends________________________________ -->
 
-
-
-	<!-- *************************************************************************************************************************
+		<!-- *************************************************************************************************************************
 							 				B  R  E  A  K
 	************************************************************************************************************************** -->
-	
-	<!-- Main body Starts  -->
 
-	<div class="container">
-        {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock %}
-    </div>
+		<!-- Main body Starts  -->
 
-	<!-- Main body ends  -->
+		<div class="container">
+			{% if messages %} {% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+			{% endfor %} {% endif %} {% block content %}{% endblock %}
+		</div>
 
-	<div style="height: 30px;" >
-		<!-- Eat Height -->
-	</div>
+		<!-- Main body ends  -->
 
-	<!-- *************************************************************************************************************************
+		<div style="height: 30px">
+			<!-- Eat Height -->
+		</div>
+
+		<!-- *************************************************************************************************************************
 							 				B  R  E  A  K
 	************************************************************************************************************************** -->
-	
 
-	<!-- Footer starts  -->
+		<!-- Footer starts  -->
 
-	<footer class="footer">
-	  	 <div class="container">
-	  	 	<div class="row">
-	  	 		<div class="footer-col">
-	  	 			<h4>Sitesoch</h4>
-	  	 			<ul>
-	  	 				<li><a href="#">Home</a></li>
-	  	 				<li><a href="#">About</a></li>
-	  	 				<li><a href="#">Pricing</a></li>
-	  	 				<li><a href="#">Privacy Policy</a></li>
-	  	 			</ul>
-	  	 		</div>
-	  	 		<div class="footer-col">
-	  	 			<h4>Address</h4>
-	  	 			<!-- <ul> -->
-	  	 				<div style="color: white;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate adipisci quia ab omnis id ipsum quae inventore.</div>
-	  	 			<!-- </ul> -->
-	  	 		</div>
-	  	 		<div class="footer-col">
-	  	 			<h4>follow us</h4>
-	  	 			<div class="social-links">
-	  	 				<a href="#"><i class="fab fa-google"></i></a>
-	  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
-	  	 				<a href="#"><i class="fab fa-instagram"></i></a>
-	  	 				<a href="#"><i class="fab fa-twitter"></i></a>
-	  	 			</div>
-	  	 		</div>
-	  	 	</div>
-	  	 </div>
-	  </footer>
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="footer-col">
+						<h4>Sitesoch</h4>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Pricing</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+					<div class="footer-col">
+						<h4>Address</h4>
+						<!-- <ul> -->
+						<div style="color: white">
+							Lorem ipsum dolor sit amet consectetur, adipisicing
+							elit. Cupiditate adipisci quia ab omnis id ipsum
+							quae inventore.
+						</div>
+						<!-- </ul> -->
+					</div>
+					<div class="footer-col">
+						<h4>follow us</h4>
+						<div class="social-links">
+							<a href="#"><i class="fab fa-google"></i></a>
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
-	<!-- Footer ends  -->
+		<!-- Footer ends  -->
 
-	<div class="demo bottomright">
-	   Bot!
-	</div>	
+		<div class="disappear chat-window">
+			<button class="far fa-times-circle"></button>
 
+			<header>Chat</header>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-	<script src="{% static 'app/Script/master.js'%}" type="text/javascript" ></script>
+			<div class="chat-area">
+				<div class="msg">
+					<img
+						src="https://images.freeimages.com/images/small-previews/e71/frog-1371919.jpg"
+						alt="An avatar"
+					/>
 
-</body>
+					<p>Hi, how can I help you?</p>
+				</div>
+			</div>
+
+			<div class="chat-type">
+				<input
+					type="text"
+					name="message"
+					placeholder="type your queries here..."
+					required
+				/>
+
+				<button>Send</button>
+			</div>
+		</div>
+		<button class="demo bottomright">Bot!</button>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+			integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+			integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="{% static 'app/Script/master.js'%}"
+			type="text/javascript"
+		></script>
+		<script
+			src="{% static 'app/Script/chat_area.js'%}"
+			type="text/javascript"
+		></script>
+	</body>
 </html>
