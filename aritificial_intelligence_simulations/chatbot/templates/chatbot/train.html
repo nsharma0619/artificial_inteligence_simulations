@@ -1,12 +1,28 @@
-{% extends "app/app_base.html" %}
+{% extends "app/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<script>
+    function loadDoc(url, cFunction) {
+      var xhttp;
+      xhttp=new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          cFunction(this);
+        }
+      };
+      xhttp.open("post", url, true);
+      xhttp.send();
+    }
+    function myFunction(xhttp) {
+      document.getElementById("demo").innerHTML =
+      xhttp.responseText;
+    }
+</script>
+
 <div class="container form_class">
-    <h1 style="text-align: center;">start training</h1>
-    <hr/>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+    <div id="demo">
+
+    </div>
+    <button class="btn btn-outline-success" type="button" onclick="loadDoc('', myFunction)">train/re-train</button>
 </div>
 {% endblock %}

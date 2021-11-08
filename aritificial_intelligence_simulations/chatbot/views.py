@@ -9,6 +9,7 @@ from .utils import make_intents, train_chatbot, chatbot
 import os
 import json
 
+on_training = []
 
 def home(request):
     return render(request, 'chatbot/home.html', {'title':'chatbot'})
@@ -26,6 +27,7 @@ def personal_details(request):
 	return render(request, 'chatbot/personal_details.html', {'title':'personal_details', 'form':form})
 
 @login_required
+@csrf_exempt
 def train(request):
 	path = os.path.abspath(os.path.dirname(__file__))
 	path = os.path.join(path, 'static/chatbot/intents/personal_intents', f'{request.user.username}_personal_intent.json')
@@ -33,20 +35,23 @@ def train(request):
 		messages.warning(request, 'You need to enter some of your personal details before training the chatbot.')
 		return redirect('chatbot-personal_details')
 	if request.method=="POST":
+		if request.user.username in on_training:
+			return JsonResponse({'status': 'Your model has been training, kindly wait for few minutes.'})
+		on_training.append(request.user.username)
 		if train_chatbot(request.user.username):
-			messages.success(request, 'Chat Bot Trained successfully.')
-			return redirect('chatapp-home')
+			on_training.remove(request.user.username)
+			return JsonResponse({'status': 'trained sucessfully'})
+		on_training.remove(request.user.username)
 	return render(request, 'chatbot/train.html', {'title':'train_chatbot'})
 
 # @require_http_methods(["POST"])
-# @login_required
 # def train_process(request):
+# 	path = os.path.abspath(os.path.dirname(__file__))
+# 	path = os.path.join(path, 'static/chatbot/intents/personal_intents', f'{request.user.username}_personal_intent.json')
 # 	if not os.path.isfile(path):
-# 		messages.warning(request, 'You need to enter some of your personal details before training the chatbot.')
-# 		return redirect('chatbot-personal_details')
+# 		return JsonResponse({'error': 'Please re-train your model. If problem does not solve, contact us as soon as possible.'})
 # 	train_chatbot(request.user.username)
-# 	messages.success(request, 'Chat Bot Trained successfully.')
-# 	return redirect('chatapp-home')
+# 	return JsonResponse({'status': 'trained sucessfully'})
 
 @require_http_methods(["POST"])
 @csrf_exempt
