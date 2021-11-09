@@ -1,5 +1,16 @@
+ <!-- 
+***************************************************
+
+  This is our local host or main domain  
+
+***************************************************
+-->
+
+
+
 <!DOCTYPE html>
 {% load static %}
+{% load crispy_forms_tags %}
 <html>
 <head>
 <meta charset="UTF-8">
@@ -7,6 +18,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <script src="https://kit.fontawesome.com/f0e1e7f5fd.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'app/Css/master.css'%}">
+
 {% if title %} 
 	<title>AI_Simulations - {{title}}</title>
 {% else %}
@@ -342,6 +355,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,3,1) 64%, rgba(250,
   </div>
 </div>
 
+<!-- ************************************************************************************ -->
 <!-- Contact Section -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
@@ -351,21 +365,25 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,3,1) 64%, rgba(250,
     <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
     <br>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <p>
-        <button class="w3-button w3-black" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
-        </button>
-      </p>
-    </form>
+    <div class="container-fluid">
+      <form method="POST" action="{% url 'contact' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+      <input type="submit" class="btn btn-primary" value="Send">
+      </form>
+    </div>  
+  </div>  
     <!-- Image of location/map -->
-    <!-- <img src="https://www.belfercenter.org/sites/default/files/styles/featured_image_1280x515_/public/images/publication/feature/AdobeStock_281653938%20%5BConverted%5D.png?h=c984d886&itok=r6RvBIa-" class="w3-image w3-greyscale" style="width:100%;margin-top:48px"> -->
+    <img src="https://www.belfercenter.org/sites/default/files/styles/featured_image_1280x515_/public/images/publication/feature/AdobeStock_281653938%20%5BConverted%5D.png?h=c984d886&itok=r6RvBIa-" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
   </div>
 </div>
+
+
+
+
+
+
+<!-- ****************************************************************************** -->
 
 <div class="bgimg-bottom w3-display-container w3-grayscale-min" id="home">
     <div class="w3-display-left w3-text-white" style="padding:48px; margin-top: 80px;">
