@@ -15,6 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <script src="https://kit.fontawesome.com/f0e1e7f5fd.js" crossorigin="anonymous"></script>
@@ -368,13 +369,17 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,3,1) 64%, rgba(250,
     <div class="container-fluid">
       <form method="POST" action="{% url 'contact' %}">
         {% csrf_token %}
-        {{ form|crispy }}
-      <input type="submit" class="btn btn-primary" value="Send">
+        {{ form.as_p }}
+        <p>
+          <button class="w3-button w3-black" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
+        </p>
       </form>
     </div>  
   </div>  
     <!-- Image of location/map -->
-    <img src="https://www.belfercenter.org/sites/default/files/styles/featured_image_1280x515_/public/images/publication/feature/AdobeStock_281653938%20%5BConverted%5D.png?h=c984d886&itok=r6RvBIa-" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+    <!-- <img src="https://www.belfercenter.org/sites/default/files/styles/featured_image_1280x515_/public/images/publication/feature/AdobeStock_281653938%20%5BConverted%5D.png?h=c984d886&itok=r6RvBIa-" class="w3-image w3-greyscale" style="width:100%;margin-top:48px"> -->
   </div>
 </div>
 

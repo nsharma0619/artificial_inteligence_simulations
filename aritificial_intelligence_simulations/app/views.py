@@ -19,7 +19,6 @@ def dashboard(request):
 
 
 def ContactFormView(request):
-
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)
         if form.is_valid():
@@ -36,10 +35,7 @@ def ContactFormView(request):
                     send_mail(subject, new_msg, email_address, ['simulations.ai@gmail.com'],fail_silently=False)
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
-            return redirect("app-dashboard")
-
-
-
+            return redirect("app-home")
     else:
         form = forms.ContactForm()
     return render(request, 'app/contact.html', {'form':form})
