@@ -4,7 +4,7 @@
 
 	bottom: 0;
 	right: 0;
-	margin: 25px;
+	margin: 10px;
 	/* padding: 0px 15px 15px 15px; */
 	background: rgb(228, 234, 255);
 	box-shadow: 5px 5px 5px black;
@@ -14,6 +14,7 @@
 	justify-content: space-between;
 
 	cursor: default;
+	width: 350px;
 }
 
 .chat-window > button {
@@ -37,12 +38,15 @@
 	color: white;
 	background-color: black;
 	padding: 5px 15px;
+	position: sticky;
+	top: 0px;
 }
 
 .chat-area {
 	height: 100%;
 
 	padding: 5px;
+	overflow-y: auto;
 }
 
 .msg {
@@ -75,25 +79,31 @@
 
 	border-radius: 5px;
 	box-shadow: 2px 2px 2px black;
+	word-break: break-all;
 }
 
 .chat-type {
 	width: 100%;
-	height: 30px;
+	height: 50px;
 	display: flex;
+	background-color: black;
 
 	padding: 5px;
+	justify-content: flex-end;
+	
 }
 
 .chat-type input {
+	width: 76%;
 	border: none;
 	outline: none;
-
+	margin-right: 2%;
 	border-radius: 5px;
 	padding: 5px;
 }
 
 .chat-type button {
+	width: 20%;
 	border: none;
 	outline: none;
 
@@ -107,3 +117,4 @@
 .disappear {
 	display: none;
 }
+
